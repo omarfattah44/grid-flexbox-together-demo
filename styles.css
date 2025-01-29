@@ -1,0 +1,77 @@
+/* Note the combined use of CSS Grid and Flexbox */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.container {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar main-content"
+    "footer footer";
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 200px 1fr;
+  min-height: 100vh;
+}
+
+/* Grid Layout */
+.header {
+  grid-area: header;
+  background-color: #4caf50;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+.main-content {
+  grid-area: main-content;
+  background-color: #fff;
+  padding: 20px;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: #515050;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Flexbox for Nav Links in Header - what might happen if we added 'flex-flow : column' to this?*/
+.nav {
+  display: flex;
+  gap: 15px;
+  flex-flow: column;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .container {
+    grid-template-areas:
+      "header"
+      "main-content"
+      "sidebar"
+      "footer";
+    grid-template-columns: 1fr;
+  }
+}
